@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Understanding People: The SCARF Model – Thompsons For Travel</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Open+Sans:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+  :root {
+    --navy: #0A52A0;
+    --cyan: #00AEEF;
+    --cyan-light: #E6F7FD;
+    --cyan-mid: #b3e8fa;
+    --navy-dark: #073970;
+    --navy-light: #EEF4FB;
+    --text: #1A1A2E;
+    --text-mid: #3D4A5C;
+    --text-light: #6B7A8D;
+    --white: #ffffff;
+    --border: #D0E4F5;
+    --amber: #F5A623;
+    --red-soft: #FFF0F0;
+    --red: #D94F3D;
+    --green-soft: #F0FAF4;
+    --green: #2E8B57;
+    --warn-bg: #FFF8EC;
+    --warn: #C97B00;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Open Sans', 'Segoe UI', sans-serif;
+    background: #F2F7FC;
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  @media print {
+    body { background: white; font-size: 11px; }
+    .page { box-shadow: none; margin: 0; max-width: 100%; border-radius: 0; overflow: visible; }
+    .print-btn { display: none !important; }
+    .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #0A52A0 !important; }
+    .premise { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #00AEEF !important; }
+    .payoff { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    @page { margin: 8mm 10mm; size: A4; }
+    .profile-card, .channel-card, .do-box, .dont-box, .formula-box, .payoff, .reminder, .section-label {
+      break-inside: avoid; page-break-inside: avoid;
+    }
+    .section-label { break-after: avoid; page-break-after: avoid; }
+    .profile-grid, .do-dont { break-inside: auto; }
+  }
+
+  .print-btn {
+    position: fixed; top: 16px; right: 16px;
+    background: var(--navy); color: white; border: none;
+    padding: 10px 18px; border-radius: 6px;
+    font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 800;
+    cursor: pointer; z-index: 100; display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 2px 8px rgba(10,82,160,0.25);
+  }
+  .print-btn:hover { background: var(--navy-dark); }
+
+  .page {
+    max-width: 960px; margin: 24px auto; background: white;
+    border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(10,82,160,0.10);
+  }
+
+  .header { background: var(--navy); padding: 24px 36px 20px; position: relative; overflow: hidden; }
+  .header::after {
+    content: ''; position: absolute; right: -40px; top: -40px;
+    width: 220px; height: 220px; border-radius: 50%; background: rgba(0,174,239,0.12);
+  }
+  .header-top { display: flex; align-items: center; justify-content: space-between; gap: 20px; width: 100%; }
+  .logo-area { flex-shrink: 0; }
+  .logo-sub {
+    font-family: 'Space Mono', monospace; font-size: 10px; color: var(--cyan);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 5px; font-weight: 500;
+  }
+  .header-title { text-align: right; flex-shrink: 1; min-width: 0; }
+  .header-title h1 {
+    font-family: 'Nunito', sans-serif; font-size: 24px; font-weight: 900;
+    color: white; line-height: 1.1; white-space: normal;
+  }
+  .header-title h1 span { color: var(--cyan); }
+  .header-title p { font-size: 11px; color: rgba(255,255,255,0.65); margin-top: 5px; font-weight: 400; white-space: nowrap; }
+  @media print {
+    .header { padding: 18px 28px 16px; }
+    .header-title h1 { font-size: 20px; white-space: nowrap; }
+    .header-title p { white-space: nowrap; }
+    .page { max-width: 100% !important; }
+  }
+
+  .premise { background: var(--cyan); padding: 10px 36px; display: flex; align-items: center; gap: 10px; }
+  .premise-icon { font-size: 16px; }
+  .premise p { font-size: 12px; font-weight: 600; color: var(--navy-dark); }
+  .premise p span { font-weight: 400; }
+
+  .body { padding: 28px 36px; }
+
+  .section-label {
+    font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan);
+    margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .formula-box {
+    background: var(--navy-light); border: 1px solid var(--border); border-left: 4px solid var(--navy);
+    border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 14px;
+  }
+  .formula-icon { font-size: 24px; line-height: 1.2; }
+  .formula-text strong {
+    font-family: 'Nunito', sans-serif; font-size: 14px; font-weight: 800; color: var(--navy);
+    display: block; margin-bottom: 3px;
+  }
+  .formula-text p { color: var(--text-mid); font-size: 12px; }
+
+  .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+  .profile-card { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .profile-card-header { padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
+  .profile-card-header .icon { font-size: 16px; }
+  .profile-card-header .card-title { font-family: 'Nunito', sans-serif; font-size: 12px; font-weight: 800; color: white; }
+  .profile-card-body { padding: 12px 14px; background: white; }
+
+  .profile-card.client .profile-card-header { background: var(--navy); }
+  .profile-card.team .profile-card-header { background: #1A6FB5; }
+
+  .profile-card-body .ask-label {
+    font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-light); margin-bottom: 6px; margin-top: 8px;
+  }
+  .profile-card-body .ask-label:first-child { margin-top: 0; }
+
+  .q-list { list-style: none; }
+  .q-list li {
+    font-size: 12px; color: var(--text-mid); padding: 4px 0; padding-left: 14px; position: relative;
+    border-bottom: 1px dashed #EEF2F7;
+  }
+  .q-list li:last-child { border-bottom: none; }
+  .q-list li::before {
+    content: '\203A'; position: absolute; left: 0; color: var(--cyan); font-weight: 700; font-size: 14px; line-height: 1.2;
+  }
+
+  .script {
+    display: block; background: var(--cyan-light); border-left: 3px solid var(--cyan); border-radius: 4px;
+    padding: 7px 10px; margin-top: 8px; font-size: 11.5px; color: var(--navy-dark); font-style: italic;
+  }
+  .script-label {
+    display: block; font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--cyan); margin-bottom: 3px; font-style: normal;
+  }
+
+  .caution {
+    background: var(--warn-bg); border: 1px solid #FDDEA0; border-radius: 8px; padding: 11px 16px;
+    display: flex; gap: 10px; align-items: flex-start; margin: -10px 0 26px;
+  }
+  .caution-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .caution p { font-size: 11.5px; color: var(--warn); font-weight: 500; line-height: 1.5; }
+  .caution strong { font-weight: 700; color: #996000; }
+
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 26px; }
+  .do-box { background: var(--green-soft); border: 1px solid #C3E8D0; border-radius: 8px; padding: 14px 16px; }
+  .dont-box { background: var(--red-soft); border: 1px solid #FADAD6; border-radius: 8px; padding: 14px 16px; }
+  .do-dont-title {
+    font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
+    text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px;
+  }
+  .do-box .do-dont-title { color: var(--green); }
+  .dont-box .do-dont-title { color: var(--red); }
+  .do-dont ul { list-style: none; }
+  .do-dont ul li {
+    font-size: 12px; color: var(--text-mid); padding: 5px 0 5px 16px; position: relative;
+    border-bottom: 1px dashed rgba(0,0,0,0.07);
+  }
+  .do-dont ul li:last-child { border-bottom: none; }
+  .do-box ul li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; font-size: 11px; }
+  .dont-box ul li::before { content: '\2717'; position: absolute; left: 0; color: var(--red); font-weight: 700; font-size: 11px; }
+
+  .payoff {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); border-radius: 8px;
+    padding: 16px 20px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 24px;
+  }
+  .payoff-item { text-align: center; }
+  .payoff-item .p-icon { font-size: 20px; margin-bottom: 4px; }
+  .payoff-item .p-label {
+    font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700; color: var(--cyan);
+    text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px;
+  }
+  .payoff-item .p-desc { font-size: 10px; color: rgba(255,255,255,0.75); line-height: 1.4; }
+
+  .reminder {
+    background: var(--warn-bg); border: 1px solid #FDDEA0; border-radius: 8px; padding: 12px 16px;
+    display: flex; gap: 10px; align-items: flex-start; margin-bottom: 20px;
+  }
+  .reminder-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .reminder p { font-size: 12px; color: var(--warn); font-weight: 500; line-height: 1.5; }
+  .reminder strong { font-weight: 700; color: #996000; }
+
+  .footer { border-top: 1px solid var(--border); padding: 12px 36px; display: flex; align-items: center; justify-content: space-between; }
+  .footer p { font-size: 10px; color: var(--text-light); }
+  .footer .brand { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--navy); }
+  .cyan-dot { display: inline-block; width: 8px; height: 8px; background: var(--cyan); border-radius: 50%; margin: 0 6px; vertical-align: middle; }
+
+  .v-pride { --v: #0A2A4A; }
+  .v-passion { --v: #1565C0; }
+  .v-professionalism { --v: #1499A8; }
+  .v-people { --v: #5DA130; }
+  .v-purpose { --v: #E2691F; }
+
+  .values-band { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 26px; }
+  .value-cell {
+    border: 1px solid var(--border); border-top: 3px solid var(--v); border-radius: 8px; padding: 11px 12px;
+    background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .value-name { font-family: 'Nunito', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 0.04em; color: var(--v); margin-bottom: 5px; }
+  .value-desc { font-size: 11px; color: var(--text-mid); line-height: 1.4; }
+
+  .value-pill {
+    font-family: 'Space Mono', monospace; font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+    padding: 2px 8px; border-radius: 10px; color: white; background: var(--v);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  .closing-band {
+    background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%); border-radius: 8px;
+    padding: 14px 20px; text-align: center; margin-bottom: 4px;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .closing-band p { font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500; }
+  .closing-band p span { font-family: 'Space Mono', monospace; color: var(--cyan); font-weight: 700; letter-spacing: 0.04em; }
+
+  .scarf-letter {
+    display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px;
+    border-radius: 6px; background: var(--navy); color: white; font-family: 'Space Mono', monospace;
+    font-size: 12px; font-weight: 700; margin-right: 6px;
+  }
+
+  @media print {
+    .value-cell { break-inside: avoid; page-break-inside: avoid; }
+    .values-band { break-inside: auto; }
+    .closing-band { break-inside: avoid; }
+    .payoff { break-inside: avoid; }
+  }
+
+  @media (max-width: 820px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .payoff { grid-template-columns: 1fr 1fr; }
+    .values-band { grid-template-columns: 1fr 1fr 1fr; }
+  }
+  @media (max-width: 560px) {
+    .profile-grid, .do-dont { grid-template-columns: 1fr; }
+    .values-band { grid-template-columns: 1fr 1fr; }
+    .header-top { flex-direction: column; align-items: flex-start; }
+    .header-title { text-align: left; }
+    .body { padding: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">&#128424;&#65039; Print / Save PDF</button>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="logo-area">
+        <div class="logo-sub">Understanding People</div>
+      </div>
+      <div class="header-title">
+        <h1>The <span>SCARF</span> Model</h1>
+        <p>Why people react the way they do, and what to do about it</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREMISE STRIP -->
+  <div class="premise">
+    <span class="premise-icon">🧠</span>
+    <p><span>Developed by Dr David Rock,</span> SCARF names five things our brains treat as rewards or threats: Status, Certainty, Autonomy, Relatedness, Fairness. Read the reaction, and you can usually spot which one is in play.</p>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- CORE MINDSET -->
+    <div class="section-label">The Core Mindset</div>
+    <div class="formula-box">
+      <div class="formula-icon">🎯</div>
+      <div class="formula-text">
+        <strong>People rarely react to the words. They react to the threat or reward underneath them.</strong>
+        <p>A client who goes quiet after a price, a colleague who bristles at a rota change, a first-timer who keeps asking "are you sure?" - these aren't random. Each one is a signal that one of five needs has just been touched. SCARF gives you the "why" behind the behaviour, so you can respond to the real thing instead of just the surface complaint.</p>
+      </div>
+    </div>
+
+    <!-- OUR VALUES -->
+    <div class="section-label">Our Values, Through the SCARF Lens</div>
+    <div class="values-band">
+      <div class="value-cell v-passion">
+        <div class="value-name">PASSION</div>
+        <div class="value-desc">Genuine enthusiasm is one of the fastest ways to build Relatedness with a client.</div>
+      </div>
+      <div class="value-cell v-people">
+        <div class="value-name">PEOPLE</div>
+        <div class="value-desc">Reading the person first is Status and Relatedness in action, before you say a word.</div>
+      </div>
+      <div class="value-cell v-professionalism">
+        <div class="value-name">PROFESSIONALISM</div>
+        <div class="value-desc">Honest indications and kept commitments protect Certainty and Fairness.</div>
+      </div>
+      <div class="value-cell v-pride">
+        <div class="value-name">PRIDE</div>
+        <div class="value-desc">A well-crafted quote or a properly briefed supplier protects everyone's Status.</div>
+      </div>
+      <div class="value-cell v-purpose">
+        <div class="value-name">PURPOSE</div>
+        <div class="value-desc">Giving people real choices and a clear next step supports their Autonomy.</div>
+      </div>
+    </div>
+
+    <!-- STATUS -->
+    <div class="section-label"><span class="scarf-letter">S</span>Status <span class="value-pill v-pride">Pride</span></div>
+    <div class="formula-box">
+      <div class="formula-icon">🏅</div>
+      <div class="formula-text">
+        <strong>Everyone wants to feel recognised, competent, and taken seriously.</strong>
+        <p>Being corrected in front of others, made to feel unsure, or quietly talked down to, all sting more than the words themselves suggest. This shows up with clients who feel judged for not knowing travel jargon, and with colleagues who feel overlooked after putting in the work.</p>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="profile-card client">
+        <div class="profile-card-header"><span class="icon">🧳</span><span class="card-title">With Clients</span></div>
+        <div class="profile-card-body">
+          <div class="ask-label">Watch For</div>
+          <ul class="q-list">
+            <li>Over-explaining basics, as if apologising for asking</li>
+            <li>Going quiet after being corrected on a fact</li>
+            <li>Comparing themselves to "people who know what they're doing"</li>
+          </ul>
+          <div class="ask-label">Protect It</div>
+          <ul class="q-list">
+            <li>Credit what they already know before adding to it</li>
+            <li>Never make a correction sound like a mistake on their part</li>
+          </ul>
+          <span class="script"><span class="script-label">Try</span>"You've actually done more research than most people who come to me, let me just fill in the gaps."</span>
+        </div>
+      </div>
+      <div class="profile-card team">
+        <div class="profile-card-header"><span class="icon">👥</span><span class="card-title">With the Team</span></div>
+        <div class="profile-card-body">
+          <div class="ask-label">Watch For</div>
+          <ul class="q-list">
+            <li>A consultant who goes quiet in group feedback</li>
+            <li>Defensiveness when a booking is queried</li>
+            <li>Pride in a hard-won client relationship being dismissed</li>
+          </ul>
+          <div class="ask-label">Protect It</div>
+          <ul class="q-list">
+            <li>Give feedback on the work, never the person, and do it privately first</li>
+            <li>Name what someone did well before what needs to change</li>
+          </ul>
+          <span class="script"><span class="script-label">Try</span>"That was a genuinely tricky client, here's one thing that would make it even stronger next time."</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CERTAINTY -->
+    <div class="section-label"><span class="scarf-letter">C</span>Certainty <span class="value-pill v-professionalism">Professionalism</span></div>
+    <div class="formula-box">
+      <div class="formula-icon">🧭</div>
+      <div class="formula-text">
+        <strong>Being able to predict what happens next feels safe. Not knowing feels unsafe, even when nothing has actually gone wrong yet.</strong>
+        <p>Travel is full of moments where certainty is naturally low, prices not released, availability unconfirmed, a supplier gone quiet. The anxiety a client feels isn't really about the missing information, it's about not knowing what happens next.</p>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-dont-title">✅ Builds Certainty</div>
+        <ul>
+          <li>Naming what you don't know yet, and when you will know it</li>
+          <li>Giving a realistic timeframe and then honouring it</li>
+          <li>Explaining the next step, even if the outcome is still open</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="do-dont-title">❌ Erodes Certainty</div>
+        <ul>
+          <li>"Leave it with me" with no timeframe attached</li>
+          <li>Going quiet mid-process without an update</li>
+          <li>Changing a plan without explaining why</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AUTONOMY -->
+    <div class="section-label"><span class="scarf-letter">A</span>Autonomy <span class="value-pill v-purpose">Purpose</span></div>
+    <div class="formula-box">
+      <div class="formula-icon">🎛️</div>
+      <div class="formula-text">
+        <strong>People want a say in how something happens to them, even in small ways.</strong>
+        <p>A client who feels steered rather than guided will resist, even toward a genuinely good option. A colleague who is simply told a rota or process has changed, with no input sought, will disengage faster than one who was consulted, even if the outcome is identical.</p>
+      </div>
+    </div>
+
+    <div class="profile-grid">
+      <div class="profile-card client">
+        <div class="profile-card-header"><span class="icon">🧳</span><span class="card-title">With Clients</span></div>
+        <div class="profile-card-body">
+          <div class="ask-label">Watch For</div>
+          <ul class="q-list">
+            <li>Pushback on a "recommended" option, even a strong one</li>
+            <li>Requests to "just see everything" rather than a shortlist</li>
+          </ul>
+          <span class="script"><span class="script-label">Try</span>"Here are two strong options, both work well, which direction feels more like you?"</span>
+        </div>
+      </div>
+      <div class="profile-card team">
+        <div class="profile-card-header"><span class="icon">👥</span><span class="card-title">With the Team</span></div>
+        <div class="profile-card-body">
+          <div class="ask-label">Watch For</div>
+          <ul class="q-list">
+            <li>Resistance to a new process announced with no context</li>
+            <li>"Why are we doing it this way now" pushback</li>
+          </ul>
+          <span class="script"><span class="script-label">Try</span>"Here's the change and why, what would make this easier to work with day to day?"</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATEDNESS -->
+    <div class="section-label"><span class="scarf-letter">R</span>Relatedness <span class="value-pill v-people">People</span></div>
+    <div class="formula-box">
+      <div class="formula-icon">🤝</div>
+      <div class="formula-text">
+        <strong>We trust people we feel some connection with, and we're wary of people who feel purely transactional.</strong>
+        <p>This is why a chat that reads as "order-taking" loses clients even when the information given is accurate, and why a supplier who has only ever heard from us when something is wrong will be slower to help when we need it.</p>
+      </div>
+    </div>
+
+    <div class="caution">
+      <span class="caution-icon">⚠️</span>
+      <p><strong>Relatedness cannot be faked.</strong> A scripted "how are you today" lands as transactional, not warm, if it isn't followed by actually listening to the answer. The connection has to be genuine, even if it's brief.</p>
+    </div>
+
+    <!-- FAIRNESS -->
+    <div class="section-label"><span class="scarf-letter">F</span>Fairness <span class="value-pill v-professionalism">Professionalism</span></div>
+    <div class="formula-box">
+      <div class="formula-icon">⚖️</div>
+      <div class="formula-text">
+        <strong>People will accept a difficult outcome if it feels fair. They will fight a small one if it doesn't.</strong>
+        <p>A client who feels a promise was broken, or a colleague who feels a rule was applied to them but not someone else, reacts far harder than the situation alone would predict. Fairness is often the real story behind a complaint that seems to be "about" something smaller.</p>
+      </div>
+    </div>
+
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="do-dont-title">✅ Builds Fairness</div>
+        <ul>
+          <li>Applying the same standard to everyone, consistently</li>
+          <li>Explaining the reasoning behind a decision, not just the decision</li>
+          <li>Owning a broken commitment quickly, before it's raised</li>
+        </ul>
+      </div>
+      <div class="dont-box">
+        <div class="do-dont-title">❌ Erodes Fairness</div>
+        <ul>
+          <li>Bending a rule quietly for one client or colleague</li>
+          <li>Letting a promise slip without acknowledging it</li>
+          <li>Defending a decision without explaining the "why"</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-label">Reading the Signal</div>
+    <div class="formula-box">
+      <div class="formula-icon">🔎</div>
+      <div class="formula-text">
+        <strong>When a reaction feels bigger than the situation, ask which S-C-A-R-F domain is actually being threatened.</strong>
+        <p>A frustrated client isn't always frustrated about the thing they're saying. A defensive colleague isn't always defending the point being made. Naming the real domain, even just to yourself, changes how you respond, and usually de-escalates faster than addressing the surface issue alone.</p>
+      </div>
+    </div>
+
+    <div class="payoff">
+      <div class="payoff-item">
+        <div class="p-icon">🏅</div>
+        <div class="p-label">Status</div>
+        <div class="p-desc">Recognised, not judged</div>
+      </div>
+      <div class="payoff-item">
+        <div class="p-icon">🧭</div>
+        <div class="p-label">Certainty</div>
+        <div class="p-desc">Knows what's next</div>
+      </div>
+      <div class="payoff-item">
+        <div class="p-icon">🎛️</div>
+        <div class="p-label">Autonomy</div>
+        <div class="p-desc">Has a real choice</div>
+      </div>
+      <div class="payoff-item">
+        <div class="p-icon">🤝</div>
+        <div class="p-label">Relatedness</div>
+        <div class="p-desc">Feels a connection</div>
+      </div>
+      <div class="payoff-item">
+        <div class="p-icon">⚖️</div>
+        <div class="p-label">Fairness</div>
+        <div class="p-desc">Trusts the process</div>
+      </div>
+    </div>
+
+    <div class="reminder">
+      <span class="reminder-icon">📝</span>
+      <p><strong>The one rule:</strong> when a reaction seems out of proportion, it usually isn't about the words on the surface. Pause, name the SCARF domain likely being touched, and respond to that, not just the complaint as stated. This is a diagnostic lens, not a script, use it alongside our other guides to understand the "why" behind what you're already trained to do.</p>
+    </div>
+
+    <!-- CLOSING VALUES BAND -->
+    <div class="closing-band">
+      <p>Understanding the "why" is how we live our values, <span>PRIDE &middot; PASSION &middot; PROFESSIONALISM &middot; PEOPLE &middot; PURPOSE</span></p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p><span class="brand">Thompsons For Travel</span><span class="cyan-dot"></span>Understanding People Reference</p>
+    <p>Source: David Rock, SCARF Model<span class="cyan-dot"></span>Internal Use Only</p>
+  </div>
+
+</div>
+</body>
+</html>
